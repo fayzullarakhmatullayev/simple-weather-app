@@ -14,8 +14,7 @@ function App() {
     const { data } = await axios(
       `https://api.openweathermap.org/data/2.5/weather?q=${query}&appid=ab8c46e5a35a12f758d5f1e0b7d1f1a3&units=metric`
     );
-    console.log(data);
-    setWeatherData((weatherData) => [...weatherData, data]);
+    setWeatherData((weatherData) => [data, ...weatherData]);
   };
 
   const submitHandler = (e) => {
@@ -46,7 +45,7 @@ function App() {
           query={query}
         />
         <Wrapper>
-          {weatherData &&
+          {weatherData[0] &&
             weatherData.map((item) => (
               <ActionAreaCard key={item.id} {...item} />
             ))}
@@ -72,7 +71,7 @@ const Title = styled.h1`
     font-size: 2.5rem;
   }
   @media (max-width: 523px) {
-    font-size: 1.8rem;
+    font-size: 2.1rem;
     text-align: center;
   }
 `;
@@ -84,13 +83,14 @@ const Wrapper = styled.div`
   justify-content: space-between;
   margin: 50px 0;
   @media (max-width: 1000px) {
-    grid-template-columns: repeat(3, 1fr);
+    grid-template-columns: repeat(3, 270px);
+    justify-content: center;
   }
   @media (max-width: 766px) {
-    grid-template-columns: repeat(2, 1fr);
+    grid-template-columns: repeat(2, 270px);
   }
   @media (max-width: 523px) {
-    grid-template-columns: repeat(1, 1fr);
+    grid-template-columns: repeat(1, 220px);
   }
 `;
 

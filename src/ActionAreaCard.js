@@ -31,6 +31,10 @@ const Card = styled.div`
   min-height: 350px;
   padding: 2rem;
   text-align: center;
+  @media (max-width: 523px) {
+    padding: 1.5rem;
+    min-height: 300px;
+  }
 `;
 const Name = styled.h2`
   color: #53627c;
